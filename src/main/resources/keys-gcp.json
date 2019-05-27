@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sda-practice-stars",
+  "private_key_id": "f21b83baeebbcec36dfe1eb764b84cae886f1c15",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCraKAk/JcgR/NF\nbcdJ0Qyw5EnE0+OMACD7d8IAEcOZuhdQYA4uXuhf2X9FZ97Abomx3zKdzcvR2Dit\n9kf3SmDCHS9NDUUOLj/K3QSQ3EqgwltzjzhDZBokpFfrcIluxrD05LP7iCRjD8Np\nvMH+1vGs7UJUpgEvDJk/rOXa1q1rs6o+aogS9+jgC1V6u1YC0z2Zm/kSwChrRRPx\nRFBwePg2zaHlEnL80JrQPZlZygfYtaOwG0jr00VtyQFX7c8ZAYOGZcwvRH2ZHaFO\n3AFqTES1LC8kOMTmWKOL9oe6PGnMks+eRZr1TyjuCiKgO0CC4vUeRHuYZx59mTvi\ndwiFabUDAgMBAAECggEAOHcF0klXK24oSGXKcZmo+ZiqaGl4mwTr2Irx4H35lmmE\nBpkt8r6XBAQs9dsquO9w8qRZEzzY+K6mtT/dIyxgRXHBxDsr1WkM4LIAMAwxlVWR\nNLcoTKLsLcfpooh27YQMhQ/V7nVBr1RhBjMFIQMDp/ickjABUdNvpFc7fOSdSk3h\nodotRGBx9yrMtNgRBbjEJP0wZD04aCD1/ZBjjggy7GVQr7oU3zjvic3ER+0UA7OR\nhTl6KJP7sQHGRc0pHwGw4lqM0+qdo45xX/+/72PDOB1Lji6qd1WaMMLw+O8Dy6+t\n9sOJT1vkpcfEbWLf3w9ynQ7m+/Z295PLw/4Jgk4C2QKBgQDlVhg23ZDh88gZ6eI5\n9yGn2niXHAsfvWZ+LxoHAwb1s3tS5w/iAfAqgCOgFny9CMSXOlWcCb9Oi2E6MeMm\nDgvQ8cluqpwBdymGSQXzfJgMtoHVFx0re+DZehC1AM7vcG/ydKkyA4aUq3tLsb2g\n6VE5bxHywEmb9VO8hPG1Dfd4VwKBgQC/VmOFh+m+jwzv2HXodFqb4Uv9zo+aTUJF\n2pBw7tp6ddketNZ1sP4TDb234dNn2tgMsxzx4i7a2jrSQ7R3WzRO/E2LM3xRzER3\noK/WU0Ivn+QdjvYAiDfzu/ZI+QKC2owqh6+AEY9sjUH8crnxBFV8sHK+mP2Ktri9\ng9kMdR2tNQKBgCzRzpmqY45FHm4yD0xUx/cN81NU37esREOU4PlN1iZelVN2ZNw+\nlLk5oby/qFEpTYJgnCqKnSC0jKPa7BGb3SNQnZVLMoH2z962lrsnNnAFmwoSIllF\nNIRMHsfBCLAywS4ZLpffqIWVndsFOZIhBwa6dj+C5N/d6ieFs9c2i46xAoGATSeN\nzBupQuE2S0UTDqBUpUTtOrRfrc33qmlfE1sNmJIK8lnjnOO5IH/K/+o9METMGBrl\n0hft4uxbCcypafPKHQuaTUZ+nBFtjnuqTBeYudGUz+KFCmPjhBJIVtaqj4+HM+Mw\n/siV+CTh9eVhW3Hu8u/H5VmV66iQyELxdBeJ1v0CgYEAoMoIa2K5y560DitNG61O\naJAKn6PCKskxg+QIfgscUJrl3RNSppY5l/An9ZXW5DYzfpDgFHGM6GiNj0tHjP9q\n4qvgQ9JMH31gLYEBtGafnFJqQiU/9UNI0W2rNCR05w3cstA29N8UC/IdCY1VWtSu\nPXoRJa3ZSLJW4ttt6sau8Lw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sda-practice-stars@appspot.gserviceaccount.com",
+  "client_id": "116474192215160472486",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sda-practice-stars%40appspot.gserviceaccount.com"
+}

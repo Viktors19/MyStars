@@ -1,0 +1,6 @@
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <application>sda-practice-stars</application>
+    <version>v1.1</version>
+    <threadsafe>true</threadsafe>
+    <runtime>java8</runtime>
+</appengine-web-app>

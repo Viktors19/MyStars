@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+    <script>
+        function getData(endpoint, $btn) {
+            $.ajax({
+                url: 'http://127.0.0.1:8080/' + endpoint,
+                method: 'GET',
+                success: function(results) {
+                    var $table = $('#' + endpoint),
+                        thead = '<tr>';
+                    $table.find('thead').html('');
+                    $table.find('tbody').html('');
+                    for (var i in results) {
+                        var row = "<tr>";
+                        for (var key in results[i]) {
+                            if (i == 0) {
+                                thead += "<th>" + key + "</th>";
+                            }
+                            if (results[i].hasOwnProperty(key)) {
+                                if (typeof results[i][key] == 'object') {
+                                    row += "<td>" + results[i][key].name + "</td>"
+                                } else {
+                                    row += "<td>" + results[i][key] + "</td>"
+                                }
+                            }
+                        }
+                        row += "</tr>";
+                        $table.find('tbody').append(row);
+                    }
+                    thead += "</tr>";
+                    $table.find('thead').append(thead);
+                    $btn.after('<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong>Success!</strong> Yeeey, we did it!</div>');
+                },
+                error: function (xhr, status) {
+                    $btn.after('<div class="alert alert-danger"><button class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong>Error:</strong> ' + status + ' (' + xhr.status + ')</div>');
+                }
+            });
+        }
+
+        function showTime () {
+            var date = new Date();
+            var minsPcnt = Math.round(date.getMinutes() / 60 * 100),
+                secsPcnt = Math.round(date.getSeconds() / 3600 * 1000) / 10;
+            $('#mins').css('width', minsPcnt + '%').text(date.getMinutes());
+            $('#secs').css('width', secsPcnt + '%').text(date.getSeconds());
+        }
+
+        $(document).ready(function () {
+            showTime();
+        });
+    </script>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Hello <small>world</small>! <span class="badge badge-info badge-pill">Take a pill</span></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="progress" onclick="showTime();">
+                <div id="mins" class="progress-bar bg-primary"></div>
+                <div id="secs" class="progress-bar bg-warning"></div>
+            </div>
+            <table id="constellations" class="table">
+                <thead class="thead-dark"></thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn btn-outline-primary btn-block" onclick="getData('constellations', $(this)); event.stopPropagation();">Get constellations</button><br />
+            <table id="stars" class="table">
+                <thead class="thead-dark"></thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn btn-outline-primary btn-block" onclick="getData('stars', $(this)); event.stopPropagation();">Get stars</button><br />
+        </div>
+    </div>
+</div>
+</body>
+</html>

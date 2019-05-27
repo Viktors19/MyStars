@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('astro', []);
+        app.controller('loader', function($scope, $http) {
+            $scope.constellations = [];
+            $scope.stars = [];
+            $scope.authToken = null;
+            $scope.getData = function(endpoint) {
+                $http.get('http://127.0.0.1:8080/' + endpoint)
+                    .then(function (response) {$scope[endpoint] = response.data;});
+            };
+            $scope.delete = function ($event) {
+                var endpoint = angular.element($event.target).attr('data-endpoint'),
+                    id = angular.element($event.target).attr('data-id');
+                $http.delete('http://127.0.0.1:8080/' + endpoint + '/' + id, {
+                    headers: {'Authorization': $scope.authToken}
+                })
+                    .then(
+                        function () { $scope.getData(endpoint); },
+                        function (reason) { console.log(reason); }
+                        );
+            };
+        });
+
+        function showTime () {
+            var date = new Date();
+            var minsPcnt = Math.round(date.getMinutes() / 60 * 100),
+                secsPcnt = Math.round(date.getSeconds() / 3600 * 1000) / 10;
+            $('#mins').css('width', minsPcnt + '%').text(date.getMinutes());
+            $('#secs').css('width', secsPcnt + '%').text(date.getSeconds());
+        }
+
+        $(document).ready(function () {
+            showTime();
+        });
+    </script>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Hello <small>world</small>! <span class="badge badge-info badge-pill">Take a pill</span></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-app="astro"  ng-controller="loader">
+    <div class="row">
+        <div class="col">
+            <div class="progress" onclick="showTime();">
+                <div id="mins" class="progress-bar bg-primary"></div>
+                <div id="secs" class="progress-bar bg-warning"></div>
+            </div>
+            <table id="constellations" class="table">
+                <thead class="thead-dark">
+                <tr><th>Name</th><th>Added by</th><th></th></tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="c in constellations">
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.user.name }}</td>
+                    <td><button data-endpoint="constellations" data-id="{{s.id}}" ng-click="delete($event);" class="btn btn-danger">&times;</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-outline-primary btn-block" ng-click="getData('constellations');">Get constellations</button><br />
+            <table id="stars" class="table">
+                <thead class="thead-dark">
+                <tr><th>Name</th><th>RA</th><th>Decl</th><th>Constellation</th><th>Added by</th><th></th></tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="s in stars">
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.ra }}</td>
+                    <td>{{ s.decl }}</td>
+                    <td>{{ s.constellation.name }}</td>
+                    <td>{{ s.user.name }}</td>
+                    <td><button data-endpoint="stars" data-id="{{s.id}}" ng-click="delete($event);" class="btn btn-danger">&times;</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-outline-primary btn-block" ng-click="getData('stars');">Get stars</button><br />
+            <input type="text" ng-model="authToken" />
+        </div>
+    </div>
+</div>
+</body>
+</html>
